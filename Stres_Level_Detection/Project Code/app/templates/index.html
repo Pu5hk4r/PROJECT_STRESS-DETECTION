@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stress Level Detection</title>
+</head>
+<body>
+    <h1>This is the Stress Level Detection model</h1>
+
+    <h2>Enter Values as mentioned:</h2>
+
+    <!-- Flash messages for errors -->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul style="color: red;">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <form action="/" method="POST">
+        <input type="number" name="MEAN_RR" placeholder="MEAN_RR" step="any" required>
+        <input type="number" name="RMSSD" placeholder="RMSSD" step="any" required>
+        <input type="number" name="pNN25" placeholder="pNN25" step="any" required>
+        <input type="number" name="pNN50" placeholder="pNN50" step="any" required>
+        <input type="number" name="LF" placeholder="LF" step="any" required>
+        <input type="number" name="HF" placeholder="HF" step="any" required>
+        <input type="number" name="LF_HF" placeholder="LF_HF" step="any" required>
+        <input type="submit">
+    </form>
+
+    {% if cond %}
+        <h2>Predicted Condition:</h2>
+        {{ cond }}
+    {% endif %}
+    
+</body>
+</html>
